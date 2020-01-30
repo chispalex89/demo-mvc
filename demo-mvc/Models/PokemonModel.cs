@@ -23,5 +23,10 @@ namespace demo_mvc.Models
         {
             return false;
         }
+
+        public bool Delete()
+        {
+            return false;
+        }
     }
 }
