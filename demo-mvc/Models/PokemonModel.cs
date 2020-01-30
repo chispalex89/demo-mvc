@@ -18,5 +18,10 @@ namespace demo_mvc.Models
                 return false;
             }
         }
+
+        public bool Update()
+        {
+            return false;
+        }
     }
 }
