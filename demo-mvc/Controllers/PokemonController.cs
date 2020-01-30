@@ -1,7 +1,6 @@
-﻿using demo_mvc.Models;
+﻿using demo_mvc.Helpers;
+using demo_mvc.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,13 +8,12 @@ namespace demo_mvc.Controllers
 {
     public class PokemonController : Controller
     {
-        List<PokemonModel> pokemonList = new List<PokemonModel>();
         //
         // GET: /Pokemon/
         public ActionResult Index()
         {
-            
-            return View(pokemonList);
+
+            return View(Storage.Instance.pokemonList);
         }
 
         //
@@ -45,8 +43,14 @@ namespace demo_mvc.Controllers
                     Number = int.Parse(collection["Number"])
                 };
 
-                pokemonList.Add(pokemon);
-                return RedirectToAction("Index");
+                if (pokemon.Save())
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(pokemon);
+                }
             }
             catch
             {
