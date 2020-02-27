@@ -6,6 +6,14 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <input type="text" class="form-control" name="search" value="" placeholder="Find by name" />
+        <button type="submit" >Search</button>
+    </div>
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

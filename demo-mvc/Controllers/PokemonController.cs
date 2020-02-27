@@ -16,6 +16,13 @@ namespace demo_mvc.Controllers
             return View(Storage.Instance.pokemonList);
         }
 
+        [HttpPost]
+        public ActionResult Index(FormCollection collection)
+        {
+            var name = collection["search"];
+            return View(PokemonModel.Filter(name));
+        }
+
         //
         // GET: /Pokemon/Details/5
         public ActionResult Details(int id)
